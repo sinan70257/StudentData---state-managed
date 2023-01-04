@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:io';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:student_management/db/model/data_model.dart';
+import 'package:student_management/presentation/student_details/student_details.dart';
 
 final List<StudentModel> studentBoxList =
     Hive.box<StudentModel>('student_db').values.toList();
@@ -38,6 +39,9 @@ class SearchScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 5, bottom: 7),
                     child: TextField(
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
                       decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
@@ -76,7 +80,16 @@ class SearchScreen extends StatelessWidget {
                               File imageFile =
                                   File(displayStudent[index].image);
                               return ListTile(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: ((context) {
+                                        return ShowDetails(
+                                            data: studentBoxList[index]);
+                                      }),
+                                    ),
+                                  );
+                                },
                                 leading: CircleAvatar(
                                   backgroundImage: FileImage(imageFile),
                                   radius: 30,

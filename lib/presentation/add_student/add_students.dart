@@ -82,8 +82,18 @@ class AddStudentsWidget extends StatelessWidget {
                       onPressed: () {
                         getImage();
                       },
-                      label: const Text('+'),
-                      icon: const Icon(Icons.image),
+                      label: const Text(
+                        '+',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
+                      ),
+                      icon: const Icon(
+                        Icons.image,
+                        color: Colors.black,
+                      ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                           Colors.grey,
